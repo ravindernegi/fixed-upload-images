@@ -1,9 +1,10 @@
-import React from "react";
-import "./styles.css";
-import ProductCard from "./components/ProductCard";
-import { useDispatch, useSelector } from "react-redux";
-import { uploadProduct } from "./actions";
-import UploadImage from "./components/UploadImage";
+import React from 'react';
+import './styles.css';
+import ProductCard from './components/ProductCard';
+import { useDispatch, useSelector } from 'react-redux';
+import { uploadProduct } from './actions';
+//import UploadImage from "./components/UploadImage";
+import DragImage from './components/DragImage';
 
 export default function App() {
   const dispatch = useDispatch();
@@ -14,12 +15,13 @@ export default function App() {
   };
 
   return (
-    <div className="App">
+    <div className='App'>
       {(products || []).map((product, index) => (
-        <ProductCard product={product} />
+        <ProductCard product={product} key={index} />
       ))}
 
-      <UploadImage processImages={processImages} />
+      {/* <UploadImage processImages={processImages} /> */}
+      <DragImage processImages={processImages} />
     </div>
   );
 }
