@@ -9,8 +9,8 @@ const useStyles = makeStyles({
 });
 
 const UploadImage = ({ processImages = () => {} }) => {
-  const classes = useStyles();
-  const [isLoading, setIsLoading] = useState(false);
+  const classes = useStyles(); // added style hooks
+  const [isLoading, setIsLoading] = useState(false); // added loading state for drag screen
   const onUploadImage = (files) => {
     const fileList = Array.from(files);
     const images = fileList.map((image) => {
@@ -43,14 +43,12 @@ const UploadImage = ({ processImages = () => {} }) => {
     onUploadImage(files);
     e.target.value = null;
   };
-
+  // Added for start drag screen
   const startDragFile = () => {
-    console.log('start drag');
     setIsLoading(true);
   };
-
+  // Added for end drag screen
   const endDragFile = () => {
-    console.log('drag end');
     setIsLoading(false);
   };
   return (
@@ -62,6 +60,7 @@ const UploadImage = ({ processImages = () => {} }) => {
           onDragEnter={startDragFile}
           className={classes.paper}
         >
+          {/* Added Spinner for drag screen */}
           {isLoading && <Spinner endDragFile={endDragFile} />}
           <div>
             <h3
